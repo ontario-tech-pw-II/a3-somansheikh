@@ -51,6 +51,12 @@ void freadnames(ifstream &f,char *list [])
 		// copy string in x to list[i] array
 		// increment i 
 
+    while (f >> x){
+        list[i] = new char[strlen(x)+1];
+        strcpy(list[i],x);
+        i++;
+    }
+    
 	list[i] = nullptr;  // We put the null to the last pointer to mark that the last element in list
 }
 void fwritenames_reverse(ofstream &f,char *list [])
@@ -61,7 +67,7 @@ void fwritenames_reverse(ofstream &f,char *list [])
 
 	for(int j = i-1; j >= 0 ; --j)
 	{
-		// your code is here
+		f << list[j] << endl;
 	}
 }
 void freenames(char *list [])
@@ -71,7 +77,3 @@ void freenames(char *list [])
 		delete [] list[i];;
 	}
 }
-
-
-
-
